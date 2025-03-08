@@ -23,7 +23,7 @@ async function initializeDatabase() {
 
 async function loadDataToDatabase() {
   await new Promise((resolve, reject) => {
-    fs.createReadStream("banks.csv")
+    fs.createReadStream("models/banks.csv")
       .pipe(csv())
       .on("data", (row) => {
         db.run("INSERT INTO banks (BIC, Charge) VALUES (?, ?)", [
@@ -35,7 +35,7 @@ async function loadDataToDatabase() {
       .on("error", reject);
   });
   await new Promise((resolve, reject) => {
-    fs.createReadStream("links.csv")
+    fs.createReadStream("models/banks.csv")
       .pipe(csv())
       .on("data", (row) => {
         db.run(
